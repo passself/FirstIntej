@@ -50,7 +50,7 @@ public class FinalTest {
 
         Date date = dzDate.toDate();
         SimpleDateFormat sFormart = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println("转化回来："+sFormart.format(date));
+        System.out.println("转换回来："+sFormart.format(date));
     }
 
     class SmallBrain{
