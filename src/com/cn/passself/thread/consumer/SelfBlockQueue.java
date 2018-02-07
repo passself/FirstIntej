@@ -1,7 +1,5 @@
 package com.cn.passself.thread.consumer;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 
 /**
