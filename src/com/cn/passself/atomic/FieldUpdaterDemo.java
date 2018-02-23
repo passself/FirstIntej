@@ -5,6 +5,8 @@ import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 /**
  * Created by shihuaxian on 2018/2/7.
+ *
+ * CAS compareAndSet 是java并发包的基础，基于它可以实现高效的，乐观，非阻塞式数据结构和算法，它也是并发包中锁，同步工具和各种容器的基础。
  */
 public class FieldUpdaterDemo {
 
