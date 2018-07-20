@@ -1,12 +1,17 @@
 package com.cn.passself.test;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 /**
  * Created by shx on 2017/7/13.
  */
 public class EnumTest {
 
     public static void main(String[] args){
-        Size size = Size.BIG;
+        /*Size size = Size.BIG;
         size.onChosen();
         EnumTest test = new EnumTest();
         int toal = test.sum(30);
@@ -27,7 +32,36 @@ public class EnumTest {
         }catch (NumberFormatException e){
             System.err.println("参数"+args[0]
                     +"不是有效的数字，请输入数字");
+        }*/
+
+        MsgType type = MsgType.ATTENTION;
+        System.out.println(type.ordinal());
+        System.out.println(type.ordinal()+1);
+
+        int sum = 2369;
+        float result = (float) sum/100;
+        float finalResult = (float) (Math.round(result*10))/10;
+        System.out.println("----"+result);
+        System.out.println("finalResult is:"+finalResult);
+        ArrayList<Object> list = new ArrayList();
+        list.add(null);
+        System.out.println("-->"+list.size());
+
+        String packageName = "com.huaxia.finance";
+        for (VersionType packStr : VersionType.values()){
+            System.out.println("packStr is:"+packStr);
         }
+        if (VersionType.NORMAL.getTypeByName().equals(packageName)){
+            System.out.println("dsads"+"true");
+        }else{
+            System.out.println("bucuo");
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        int month = calendar.get(Calendar.MONTH) + 1;
+        System.out.println(month+"月");
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        System.out.println(day+"日");
     }
 
     private int sum(int year){

@@ -71,7 +71,9 @@ public class BinaryTree {
         }
     }
 
-    //前序遍历(root 左右)
+    /**
+     * 前序遍历(root 左右)
+     */
     public void preOrder(TreeNode node){
         if (node == null){
             return;
