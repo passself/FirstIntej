@@ -1,8 +1,10 @@
 package com.cn.passself.aes;
+
+import com.sun.org.apache.xml.internal.security.utils.Base64;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import org.apache.commons.codec.binary.Base64;
 
 public class AESOperator {
     /*
@@ -36,7 +38,7 @@ public class AESOperator {
         IvParameterSpec iv = new IvParameterSpec(vector.getBytes());// 使用CBC模式，需要一个向量iv，可增加加密算法的强度
         cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
         byte[] encrypted = cipher.doFinal(encData.getBytes("utf-8"));
-        return Base64.encodeBase64String(encrypted);
+        return "";//Base64.encodeBase64String(encrypted);
         //return Base64.encode(new String(encrypted));// 此处使用BASE64做转码。
     }
 
@@ -49,7 +51,7 @@ public class AESOperator {
         IvParameterSpec iv = new IvParameterSpec(ivParameter.getBytes());// 使用CBC模式，需要一个向量iv，可增加加密算法的强度
         cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
         byte[] encrypted = cipher.doFinal(sSrc.getBytes("utf-8"));
-        return Base64.encodeBase64String(encrypted);// 此处使用BASE64做转码。
+        return "";//Base64.encodeBase64String(encrypted);// 此处使用BASE64做转码。
     }
 
     // 解密
@@ -60,7 +62,7 @@ public class AESOperator {
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             IvParameterSpec iv = new IvParameterSpec(ivParameter.getBytes());
             cipher.init(Cipher.DECRYPT_MODE, skeySpec, iv);
-            byte[] encrypted1 = Base64.decodeBase64(sSrc);// 先用base64解密
+            byte[] encrypted1 = null;//Base64.decodeBase64(sSrc);// 先用base64解密
             byte[] original = cipher.doFinal(encrypted1);
             String originalString = new String(original, "utf-8");
             return originalString;
@@ -76,7 +78,7 @@ public class AESOperator {
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             IvParameterSpec iv = new IvParameterSpec(ivs.getBytes());
             cipher.init(Cipher.DECRYPT_MODE, skeySpec, iv);
-            byte[] encrypted1 = Base64.decodeBase64(sSrc);// 先用base64解密
+            byte[] encrypted1 = null;//Base64.decodeBase64(sSrc);// 先用base64解密
             byte[] original = cipher.doFinal(encrypted1);
             String originalString = new String(original, "utf-8");
             return originalString;
