@@ -18,7 +18,7 @@ public class ArrayTest {
             }
             students.add(student);
         }
-        //Collections.sort(students);
+        //Collections.selectSort(students);
         Collections.sort(students, new ComprareByName());
         for (Student s : students){
             System.out.println(""+s.name);
