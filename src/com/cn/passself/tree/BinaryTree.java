@@ -151,6 +151,23 @@ public class BinaryTree {
         }
     }
 
+    public void noMiddleOrder(TreeNode node){
+        if (node ==null){
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        while (node!=null || !stack.isEmpty()){
+            if (node!=null){
+                stack.push(node);
+                node = node.leftChildNode;
+            }else {
+                node = stack.pop();
+                System.out.println(node.name);
+                node = node.rightChildNode;
+            }
+        }
+    }
+
     /**
      * 非遍历后序遍历
      * @param node
