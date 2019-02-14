@@ -2,6 +2,10 @@ package com.cn.passself.algorithm;
 
 import java.util.Arrays;
 
+/**
+ * 常见排序算法以及优化
+ *
+ */
 public class Main {
 	
 	/**
@@ -40,6 +44,14 @@ public class Main {
 				break;
 			}
 		}
+	}
+
+	/**
+	 * 递归实现
+	 * @param arr
+	 */
+	public static void quickSort(int[] arr){
+
 	}
 	
 	public static void main(String[] args) {
