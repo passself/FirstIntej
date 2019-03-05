@@ -1,6 +1,7 @@
 package com.cn.passself.algorithm;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 
 /**
  * 快排，递归和非递归
@@ -40,9 +41,57 @@ public class QuickSort {
         }
     }
 
+    /**
+     * 非递归
+     * @param array
+     * @param start
+     * @param end
+     */
+    public static void noRecQuickSort(int[] array,int start,int end){
+        LinkedList<Integer> stack = new LinkedList<Integer>();//用栈来模拟
+        if (start < end){
+            stack.push(end);
+            stack.push(start);
+
+            while (!stack.isEmpty()){
+                int l = stack.pop();
+                int r = stack.pop();
+                int index = partition(array,l,r);
+
+                if (l < index -1){
+                    stack.push(index -1);
+                    stack.push(l);
+                }
+
+                if (r > index +1){
+                    stack.push(r);
+                    stack.push(index+1);
+                }
+            }
+        }
+    }
+
+    public static int partition(int[] a, int start, int end){
+        int pivot = a[start];
+        while (start<end){
+            while (start < end && a[end] >= pivot){
+                end --;
+            }
+            a[start] = a[end];
+            while (start < end && a[start] <= pivot){
+                start ++;
+            }
+            a[end] = a[start];
+        }
+        a[start] = pivot;
+
+        return start;
+    }
+
     public static void main(String[] args) {
         int[] arr = {2, 1,6,3,4,11,2,3,5,6};
-        quickSort(arr,0,arr.length-1);
+        //quickSort(arr,0,arr.length-1);
+        noRecQuickSort(arr,0,arr.length-1);
         System.out.println("final "+Arrays.toString(arr));
     }
 }
