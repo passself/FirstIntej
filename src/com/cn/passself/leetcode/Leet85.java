@@ -46,4 +46,45 @@ public class Leet85 {
 
         return result;
     }
+
+    public int maximalRectangle2(char[][] matrix) {
+        if ( matrix == null || matrix.length == 0 ) return 0;
+        int m = matrix.length, n = matrix[0].length, max = 0;
+        int[] row_sum = new int[n];
+        for ( int i = 0; i < m; i++ ) {
+            for ( int j = 0; j < n; j++ )
+                // 遇到0重置，1累加
+                row_sum[j] = ('0' == matrix[i][j]) ? 0 : row_sum[j] + 1;
+            int area = largestRectangleArea(row_sum);
+            if ( area > max )
+                max = area;
+        }
+        return max;
+    }
+
+    private int largestRectangleArea(int[] heights) {
+        int max = 0, n = heights.length;
+        int[] small_left = new int[n];
+        int[] small_right = new int[n];
+        small_left[0] = -1;
+        small_right[n-1] = n;
+        for ( int i = 1; i < n; i++ ) {
+            int idx = i - 1;
+            while ( idx >= 0 && heights[idx] >= heights[i] )
+                idx = small_left[idx];
+            small_left[i] = idx;
+        }
+        for ( int i = n - 2; i >= 0; i-- ) {
+            int idx = i + 1;
+            while ( idx < n && heights[idx] >= heights[i] )
+                idx = small_right[idx];
+            small_right[i] = idx;
+        }
+        for ( int i = 0; i < n; i++ ) {
+            int area = (small_right[i] - small_left[i] - 1) * heights[i];
+            if ( area > max )
+                max = area;
+        }
+        return max;
+    }
 }
