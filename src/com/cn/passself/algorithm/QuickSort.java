@@ -7,6 +7,7 @@ import java.util.LinkedList;
  * 快排，递归和非递归
  * 为什么必须先从右侧循环
  * 参考 https://blog.csdn.net/mwb1219/article/details/51263379
+ * https://blog.csdn.net/Alyson_jm/article/details/80304210
  */
 public class QuickSort {
 
