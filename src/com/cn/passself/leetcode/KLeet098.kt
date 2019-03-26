@@ -4,7 +4,8 @@ package com.cn.passself.leetcode
  * kotlin 版本
  */
 class KLeet098 {
-    inner class TreeNode internal constructor(internal var value: Int) {
+
+    /*inner class TreeNode internal constructor(internal var value: Int) {
         internal var left: TreeNode? = null
         internal var right: TreeNode? = null
     }
@@ -23,6 +24,6 @@ class KLeet098 {
             }
         }
         return false
-    }
+    }*/
 
 }
