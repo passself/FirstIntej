@@ -1,7 +1,9 @@
 package com.cn.passself.date;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class DateUtils {
 
@@ -22,5 +24,16 @@ public class DateUtils {
 
         System.out.println("---"+format2.format(tempTime));
         System.out.println("---"+format3.format(tempTime));
+
+        System.out.println(convertDateWithTimeZome(tempTime));
+    }
+
+    public static String convertDateWithTimeZome(long time){
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeZone(TimeZone.getTimeZone("UTC"));
+        cal.setTimeInMillis(time);
+        return ((cal.get(Calendar.MONTH) + 1) + "月"
+                + cal.get(Calendar.DAY_OF_MONTH) + "日");
+
     }
 }
