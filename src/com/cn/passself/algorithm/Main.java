@@ -46,6 +46,31 @@ public class Main {
 		}
 	}
 
+	public static int binarySearchP(int[] nums, int target) {
+		// write your code here
+		int result = -1;
+		int start = 0;
+		int end = nums.length - 1;
+		int middle = 0;
+		while(start+1 < end){
+			middle = start + (end - start) /2;
+			if(target == nums[middle]){
+				end = middle;
+			}else if(target > nums[middle]){
+				start = middle;
+			}else{
+				end = middle;
+			}
+		}
+		if (nums[start] == target){
+			result = target;
+		}
+		if (nums[end] == target){
+			result = end;
+		}
+		return result;
+	}
+
 	/**
 	 * 递归实现
 	 * @param arr
@@ -55,12 +80,15 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		int[] datas = {1,3,12,43,12,1,342,12};
+		/*int[] datas = {1,3,12,43,12,1,342,12};
 		maoPao(datas);
 		int[] bDatas = {1,4,6,8,10,11,16,17,20};
-		binarySearch(bDatas, 11);
-
-
+		binarySearch(bDatas, 11);*/
+		int[] nums1 = new int[]{3,4,5,8,8,8,8,10,13,14};
+		int[] nums = new int[]{4,5,9,9,12,13,14,15,15,18};
+		System.out.println(binarySearchP(nums1,8));
+		//System.out.println(binarySearch(nums,8));
+		binarySearch(nums,10);
 	}
 
 	/**
