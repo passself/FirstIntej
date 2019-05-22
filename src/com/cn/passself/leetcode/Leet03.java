@@ -51,24 +51,24 @@ public class Leet03 {
         if (s == null || s.isEmpty()){
             return 0;
         }
-        //ans 记录最大count set 只是记录当前容器里面字符
-        int i = 0, j = 0,ans = 0;
+        //count 记录最大count set 只是记录当前容器里面字符
+        int left = 0, right = 0,count = 0;
 
         int n = s.length();
         Set<Character> set = new HashSet<>();
-        while(i< n && j < n){
-            if (!set.contains(s.charAt(j))){
+        while(left< n && right < n){
+            if (!set.contains(s.charAt(right))){
                 System.out.println("before add -->"+Arrays.toString(set.toArray()));
-                set.add(s.charAt(j++));
-                ans = Math.max(ans,j - i);
+                set.add(s.charAt(right++));
+                count = Math.max(count,right - left);
                 System.out.println("after add -->"+Arrays.toString(set.toArray()));
             }else{
                 System.out.println("before remove -->"+Arrays.toString(set.toArray()));
-                set.remove(s.charAt(i++));
+                set.remove(s.charAt(left++));
                 System.out.println("after remove -->"+Arrays.toString(set.toArray()));
             }
         }
-        return ans;
+        return count;
     }
 
     /**
@@ -90,5 +90,29 @@ public class Leet03 {
             map.put(s.charAt(j),j+1);
         }
         return ans;
+    }
+
+    public static int lengthestSubStringsIndex2(String s){
+        if (s == null || s.isEmpty()){
+            return 0;
+        }
+        int n = s.length();
+        int[] letters = new int[256];
+        int start = 0, end = 0;
+        int max = 0;
+        while (end < n){
+            int c = (int)s.charAt(end);
+            letters[c] ++;
+            if (letters[c] >1){
+                max = Math.max(max,end - start);
+                while (letters[c] >1){
+                    letters[s.charAt(start)] --;
+                    start++;
+                }
+            }
+            end++;
+        }
+        max = Math.max(max,end-start);
+        return max;
     }
 }

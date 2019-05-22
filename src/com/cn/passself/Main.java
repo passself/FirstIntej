@@ -3,6 +3,8 @@ package com.cn.passself;
 import com.cn.passself.aes.AESOperator;
 
 import java.util.concurrent.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 
@@ -36,6 +38,17 @@ public class Main {
             System.out.println("time is:"+time);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+
+        String content = "花朵华盟花里";
+
+        Pattern p = Pattern.compile("花");
+        Matcher m = p.matcher(content);
+        while (m.find()) {
+            int start = m.start();
+            int end = m.end();
+            System.out.println("start is:"+start);
+            System.out.println("end is:"+end);
         }
     }
 
