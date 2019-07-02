@@ -1,6 +1,7 @@
 package com.cn.passself.file;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
@@ -14,10 +15,10 @@ import java.util.zip.ZipInputStream;
 public class ZipUtils {
 
     public static void main(String[] args) {
-        String zipFilePath = "/Users/xxx/Documents/temp/v6.zip";
-        String outputFolder = "/Users/xxx/Documents/temp/res/";
+        String zipFilePath = "/Users/shihuaxian/Downloads/appresource_v8.0.0.zip";
+        String outputFolder = "/Users/shihuaxian/Downloads/appresource/";
         System.out.println(new File(zipFilePath).exists());
-        unZipIt(zipFilePath,outputFolder);
+        //unZipIt(zipFilePath,outputFolder);
 
         //测试2
         try {
@@ -40,7 +41,7 @@ public class ZipUtils {
         }
         try {
             //get the zip file content
-            ZipInputStream zis = new ZipInputStream(new FileInputStream(zipFilePath));
+            ZipInputStream zis = new ZipInputStream(new FileInputStream(zipFilePath),Charset.forName("gbk"));
             ZipEntry ze = zis.getNextEntry();
             while (ze != null){
                 String fileName = ze.getName();

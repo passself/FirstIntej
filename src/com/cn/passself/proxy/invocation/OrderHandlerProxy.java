@@ -15,7 +15,7 @@ public class OrderHandlerProxy implements InvocationHandler {
         //通过proxy静态方法创建代理类，第一个参数为委托类的类加载器
         //第二个参数为委托类实现的接口集，第三个参数是处理类本身
         return Proxy.newProxyInstance(this.target.getClass().getClassLoader(),
-                this.getClass().getInterfaces(),this);
+                this.target.getClass().getInterfaces(),this);
     }
 
     @Override

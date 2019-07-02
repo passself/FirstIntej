@@ -47,6 +47,24 @@ public class MainTest {
         System.out.println(n >>> 1);
         n |= n >>> 1;
         System.out.println(n);
+
+        String tempTime = "2018-06-05T06:45:00.000Z";
+        System.out.println(getTransferTime(tempTime));
+    }
+
+    public static String getTransferTime(String time){
+        String tempTime = time.replace("Z"," UTC");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z");
+        Date d = null;
+        try {
+            d = format.parse(tempTime);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = sf.format(d);
+        return date;
     }
 
     public static void testDate(){
