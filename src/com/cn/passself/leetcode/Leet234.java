@@ -86,4 +86,62 @@ public class Leet234 {
 
     //方法3 https://blog.csdn.net/happyaaaaaaaaaaa/article/details/51383256
 
+
+    public boolean isPalindrome3(ListNode head){
+        if(head == null || head.next == null){
+            return true;
+        }
+        ListNode slow = head,fast = head;
+        ListNode pre = head,prepre = null;
+        while(fast != null && fast.next.next!= null){
+            pre = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+            pre.next = prepre;
+            prepre = pre;
+        }
+        //如果fast为null , 说明是奇数，需要再进一位
+        if (fast != null){
+            slow = slow.next;
+        }
+        //此时pre 为反转原链表前半部分的子链
+        //slow 为原链表的中间节点
+        while(pre != null && slow != null){
+            if (pre.val != slow.val){
+                return false;
+            }
+            pre = pre.next;
+            slow = slow.next;
+        }
+        return true;
+    }
+    //方法4
+    public boolean isPalindrome4(ListNode head) {
+        if(head == null || head.next == null) {
+            return true;
+        }
+        ListNode slow = head, fast = head;
+        ListNode pre = head, prepre = null;
+        while(fast != null && fast.next != null) {
+            pre = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+            pre.next = prepre;
+            prepre = pre;
+        }
+        // 如果 fast 不为 null，说明是奇数，需要再进一位
+        if(fast != null) {
+            slow = slow.next;
+        }
+        // 此时 pre 为反转原链表前半部分的子链表
+        // slow 为原链表的中间节点
+        while(pre != null && slow != null) {
+            if(pre.val != slow.val) {
+                return false;
+            }
+            pre = pre.next;
+            slow = slow.next;
+        }
+        return true;
+    }
 }

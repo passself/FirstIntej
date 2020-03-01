@@ -12,7 +12,7 @@ public class Leet03 {
         //测试用例
         String test1 = "abcbabcbb";
 
-        System.out.println(lengthestSubStrings(test1));
+        System.out.println(lengthestSubStringsIndex(test1));
 
     }
 

@@ -12,8 +12,9 @@ import java.util.List;
 public class Leet15 {
 
     public static void main(String[] args) {
-        int[] nums = {-1, 0, 1, 2, -1, -4};
-        List<List<Integer>> result = threeSum(nums);
+        //int[] nums = {-1, 0, 1, 2, -1, -4};
+        int[] nums = {0, 0, 0};
+        List<List<Integer>> result = sumTotal(nums);
         for (List l : result) {
             System.out.println(Arrays.toString(l.toArray()));
         }
