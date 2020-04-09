@@ -1,4 +1,4 @@
 package com.cn.passself.leetcode;
 
-public class Leet032 {
+public class Leet32 {
 }

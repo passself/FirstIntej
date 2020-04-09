@@ -1,6 +1,6 @@
 package com.cn.passself.leetcode;
 
-public class Leet021 {
+public class Leet21 {
 
     public class ListNode {
         int val;

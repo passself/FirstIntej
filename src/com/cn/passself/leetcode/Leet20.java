@@ -7,7 +7,7 @@ import java.util.Stack;
  * https://leetcode-cn.com/problems/valid-parentheses/
  * 有效的括号
  */
-public class Leet020 {
+public class Leet20 {
 
     public static void main(String[] args) {
         System.out.println(isValid(""));

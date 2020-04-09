@@ -3,8 +3,9 @@ package com.cn.passself.leetcode;
 /**
  * https://leetcode-cn.com/problems/validate-binary-search-tree/
  * 验证二叉搜索树
+ * 解析https://leetcode-cn.com/problems/validate-binary-search-tree/solution/zong-jie-java-quan-jie-fa-by-1yx/
  */
-public class Leet098 {
+public class Leet98 {
     public class TreeNode {
         int val;
         TreeNode left;

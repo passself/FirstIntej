@@ -4,7 +4,7 @@ package com.cn.passself.leetcode;
  * 70. 爬楼梯
  * https://leetcode-cn.com/problems/climbing-stairs/comments/
  */
-public class Leet070 {
+public class Leet70 {
 
     /**
      * 递归太慢了
