@@ -105,51 +105,55 @@ public class Leet23 {
      * method3
      * 两两合并
      */
-    public ListNode mergeTwo(ListNode a, ListNode b) {
-        if (a == null || b == null) {
-            return a == null ? b : a;
+    public ListNode mergeTwo(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
         }
-        if (a.val <= b.val){
-            a.next = mergeTwo(a.next,b);
-            return a;
-        }else{
-            b.next = mergeTwo(a,b.next);
-            return b;
+        if (l2 == null) {
+            return l1;
+        }
+        if (l1.val <= l2.val) {
+            l1.next = mergeTwo(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = mergeTwo(l1, l2.next);
+            return l2;
         }
     }
 
     public ListNode mergeKListsTwo(ListNode[] lists) {
-        if(lists==null || lists.length==0) {
+        if (lists == null || lists.length == 0) {
             return null;
         }
         //将lists[0]作为最终合并的链表，然后将list[0]和lists[1]合并成lists[0-1]
         //再将lists[0-1]和lists[2]合并，如此反复最终lists[0]就是最终结果
         ListNode res = lists[0];
-        for (int i = 1; i < lists.length;i++){
-            res = mergeTwo(res,lists[i]);
+        for (int i = 1; i < lists.length; i++) {
+            res = mergeTwo(res, lists[i]);
         }
         return res;
     }
 
     /**
      * 分治
+     *
      * @param lists
      * @return
      */
     public ListNode mergeKListsF(ListNode[] lists) {
-        if(lists==null || lists.length==0) {
+        if (lists == null || lists.length == 0) {
             return null;
         }
-        return helper(lists,0,lists.length-1);
+        return helper(lists, 0, lists.length - 1);
     }
 
-    private ListNode helper(ListNode[] lists,int begin,int end){
-        if (begin == end){
-            return lists[begin];
+    private ListNode helper(ListNode[] lists, int left, int right) {
+        if (left == right) {
+            return lists[left];
         }
-        int mid = begin + (begin+end)/2;
-        ListNode leftNode = helper(lists,begin, mid);
-        ListNode rightNode = helper(lists,mid,end);
-        return mergeTwo(leftNode,rightNode);
+        int mid = left + (right - left) / 2;
+        ListNode leftNode = helper(lists, left, mid);
+        ListNode rightNode = helper(lists, mid+1, right);
+        return mergeTwo(leftNode, rightNode);
     }
 }

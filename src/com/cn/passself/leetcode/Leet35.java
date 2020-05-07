@@ -1,6 +1,7 @@
 package com.cn.passself.leetcode;
 
 public class Leet35 {
+
     public int searchInsert(int[] nums, int target) {
         if(nums ==null || nums.length ==0){
             return -1;
